@@ -1,0 +1,11 @@
+.metadata/
+RemoteSystemsTempFiles/
+/.recommenders/
+Servers/
+maeggiSeggi/.classpath
+maeggiSeggi/.settings
+maeggiSeggi/.project
+maeggiSeggi/.springBeans
+maeggiSeggi/.tern-project
+maeggiSeggi/target/m2e-wtp/web-resources/META-INF/
+maeggiSeggi/target/classes/

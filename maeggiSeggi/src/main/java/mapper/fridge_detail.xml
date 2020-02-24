@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="maeggi.seggi.fridge">
+  		<select id="selectAll" resultType="Map" parameterType="String">
+  			select rd.*, i.name, i.ig_type_name 
+  			from refrigerator_detail rd, ingredients i 
+  			where i.ingredient_id = rd.ingredient_id and rd.refrigerator_id=#{refrigerator_id}
+  		</select>
+  		<insert id="insertAllFridgeDetail" parameterType="fridgeDetailList">
+  			insert all
+  			<foreach collection="detailList" item="fd" separator=" ">
+  				into refrigerator_detail values(#{fd.ingredient_id}, #{fd.ig_amount}, sysdate, sysdate, sysdate, sysdate, #{fd.refrigerator_id})
+  			</foreach>
+  			select * from dual
+  		</insert>
+  		<delete id="deletebyId" parameterType="String">
+  			delete from refrigerator_detail
+  			where refrigerator_id=#{refrigerator_id}
+  		</delete>
+  		<delete id="deleteFridgeDetail" parameterType="fridgeDetailList">
+  			delete from refrigerator_detail
+  			<where>
+  				<foreach collection="detailList" item="fd" separator="OR">
+  					refrigerator_id=#{fd.refrigerator_id} and ingredient_id=#{fd.ingredient_id}
+  				</foreach> 
+  			</where>
+  		</delete>
+  </mapper>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- mapper가 너무 많으니까 namespace로 구분지어주기 -->
+<mapper namespace="maeggi.seggi.comment">
+	<!-- 댓글 작성-->
+	<insert id="insert_comment" parameterType="comment">
+		insert into replycom 
+		values(com_no_seq.nextval, #{board_no}, #{com_content}, sysdate, #{member_id})
+	</insert>
+	
+	<select id="listall_comment" resultType="comment">
+		select * from replycom
+		where board_no = #{board_no} order by com_no asc
+	</select>
+	
+	
+	
+
+</mapper>
+
+
+
+
+
+
+
+
+

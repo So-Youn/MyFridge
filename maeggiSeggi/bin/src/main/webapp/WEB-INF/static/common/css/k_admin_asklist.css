@@ -1,0 +1,22 @@
+@charset "UTF-8";
+
+#outter,h2,h3{
+	font-family: 'PapyrusM';
+}
+
+
+#asklist_customview{
+	margin-top : 10px;
+	margin-bottom: 10px;
+	
+}
+
+.askboard{
+	margin-left : auto;
+	margin-right: auto;
+	width : 1000px;
+	text-align: center;
+}
+.askboard th {
+    text-align: center;
+  }

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="maeggi.seggi.ingredient">
+  	<select id="selectAllByCategory" resultType="ingredients" parameterType="String">
+  		select ingredient_id, name, ig_type_name
+  		from ingredients 
+  		where ingredient_id in (select min(ingredient_id) from ingredients group by name) and ig_type_name=#{category}
+  	</select>
+  	<select id="selectAllByName" resultType="ingredients" parameterType="Map">
+  		select ingredient_id, name, ig_type_name
+  		from ingredients 
+  		where ingredient_id in (select min(ingredient_id) from ingredients group by name) and ig_type_name=#{category} and name like '%' || #{name} || '%'
+  	</select>
+  	<insert id="insertigdetail" parameterType="Map">
+  		insert all
+  		<foreach collection="igdetail" item="ig" separator=" ">
+  			into ingredients values(concat('rec', (recipe_id_seq.currval + 90000)) ,concat('ig',ig_id_seq.nextval + 1000000),#{ig.name},#{ig.volume},0,#{ig.ig_type_name})
+  		</foreach>	
+  		select * from dual
+  	</insert>
+  	<select id="selectRecipeIg" parameterType="String" resultType="ingredients">
+  		select * from ingredients where recipe_id = #{recipe_id}
+  	</select>
+  </mapper>

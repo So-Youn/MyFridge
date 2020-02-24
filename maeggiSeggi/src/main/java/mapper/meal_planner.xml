@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <!-- mapper가 너무 많으니까 namespace로 구분지어주기 -->
+<mapper namespace="maeggi.seggi.meal">
+	<select id="mealPlan" resultType="meal" parameterType="String">
+		select * from meal_Planner where planner_date >= #{planner_date} and member_id = #{member_id}
+		order by planner_date asc, PLANNER_CODE asc
+	</select>
+	
+	<insert id="mealPlanInsert" parameterType="meal">
+		insert into meal_planner 
+		values(mealplanner_seq.nextval, #{meal_name}, sysdate, #{planner_date},#{planner_code},#{member_id},#{kcal}*3)
+	</insert>
+	
+	<select id="mealKcal" resultType="int" parameterType="String">
+		select sum(kcal) from meal_planner 
+		where planner_date = #{planner_date} group by planner_date
+	</select>
+	
+</mapper>
+
+
+
+
+
+
+
+
+

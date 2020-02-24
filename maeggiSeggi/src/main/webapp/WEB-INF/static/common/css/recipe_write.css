@@ -1,0 +1,88 @@
+@charset "UTF-8";
+b {
+	text-align: justify;
+	font-size: 15pt;
+}
+.btn{
+padding: 0%;
+border: solid 1px transparent;
+background: white;
+}
+
+h1 {
+	text-align: center;
+	font-family: PapyrusB;
+}
+
+#register {
+	width: 10%;
+	background-color: white;
+	border: solid 1px gray;
+	color: #F8585B;
+	padding: 9px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bolder;
+	cursor: pointer;
+	border-radius: 10px;
+	margin-top: 10px;
+	margin-left: 80%;
+	float: left;
+}
+
+#cancle {
+	width: 10%;
+	background-color: white;
+	border: solid 1px gray;
+	color: #F8585B;
+	padding: 9px 10px;
+	text-align: center;
+	text-decoration: none;
+	font-size: 15px;
+	font-weight: bolder;
+	cursor: pointer;
+	float: left;
+	border-radius: 10px;
+	margin-top: 10px;
+}
+
+.selectbox {
+	display: inline-block;
+	
+}
+
+input[type=text] {
+	width: 40%;
+	padding: 7px 10px;
+	margin: 8px 2px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+select {
+	width: 100%;
+	padding: 7px 10px;
+	margin: 8px 2px;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+#sort {
+	display: inline-block;
+	
+}
+#ig_side_Add{
+display: inline;
+width:auto;
+}
+.jumbotron{
+  padding: 30px 15px;
+  margin-bottom: 30px;
+  color: inherit;
+  background-color:#fdd7c8;
+}

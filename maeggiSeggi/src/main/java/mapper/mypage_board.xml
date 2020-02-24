@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- mapper가 너무 많으니까 namespace로 구분지어주기 -->
+<mapper namespace="maeggi.seggi.mypage">
+	<select id="listall" resultType="board">
+		select * from ask_board where member_id = #{member_id}
+	</select>
+	
+	<select id="updatelist" resultType="board">
+		select askno ,ask_title, ask_content, member_id from ask_board where askno = #{askno}
+	</select>
+	
+	<insert id="insert" parameterType="board">
+		insert into ask_board
+		values(ask_board_seq.nextval,#{member_id},
+		#{ask_title},#{ask_content},sysdate)
+
+	</insert>
+	<select id="read" parameterType="int" resultType="board">
+		select * from
+		ask_board where askno = #{askno}
+	</select>
+
+	<update id="update" >
+		update ask_board 
+		set ask_title = #{ask_title}, ask_content = #{ask_content} where askno = #{askno}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		delete from ask_board where
+		askno = #{askno}
+	</delete>
+
+	<!-- mypoint listall-->
+	<select id="pointListall" resultType="point">
+		select * from point_rule where member_id = #{member_id}
+	</select>
+	
+	<!-- mypoint point합산 -->
+	<select id="pointSum" resultType="int">
+		select sum(point) from point_rule where member_id = #{member_id}
+		group by member_id
+	</select>
+	
+	
+	
+	<!-- 밑에는 관리자 관점 -->
+	<!-- 관리자가 보는 문의 목록 리스트 -->
+	<select id="admin_asklist" resultType="board">
+		select * from ask_board
+	</select>
+	<!-- 관리자가 보는 문의 글 상세보기-->
+	<select id="admin_askdetail" parameterType="int" resultType="board">
+		select * from
+		ask_board where askno = #{askno}
+	</select>
+</mapper>
+
+
+
+
+
+
+
+
+

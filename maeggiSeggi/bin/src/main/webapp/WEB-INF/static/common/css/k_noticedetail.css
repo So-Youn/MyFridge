@@ -1,0 +1,34 @@
+@charset "UTF-8";
+
+#outter,h2,h3{
+	font-family: 'PapyrusM';
+}
+
+
+#noticeboard_detail{
+	margin-left : auto;
+	margin-right: auto;
+	width : 1000px;
+	text-align: center;
+	
+}
+
+
+
+#noticelist_customview{
+	margin-top : 10px;
+	margin-bottom: 10px;
+}
+
+
+#notice_backtolist_button{
+	width : 100px;
+}
+#notice_back{
+	position : relatvie;
+	top : 100px;
+	width : 100px;
+	margin-top : 30px;
+	margin-left : auto;
+	margin-right : auto;
+}

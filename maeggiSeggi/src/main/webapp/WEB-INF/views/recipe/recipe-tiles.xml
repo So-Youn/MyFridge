@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+	<definition name="main" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/main.jsp" />
+	</definition>
+	<definition name="level" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/level_recipe.jsp"/>
+	</definition>
+<!-- 	<definition name="listall" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/search_recipe.jsp"/>
+	</definition> -->
+	<definition name="search" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/search_recipe.jsp"/>
+	</definition>
+	<definition name="detail" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/detail_recipe.jsp"/>
+	</definition>
+	<definition name="add" extends="popupTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/planner_add.jsp"/>
+	</definition>
+	<definition name="recipe_write" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/recipe_write.jsp"/>
+	</definition>
+	<definition name="recipe/upload" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/recipe/sample.jsp"/>
+	</definition>
+	
+	
+	
+</tiles-definitions>

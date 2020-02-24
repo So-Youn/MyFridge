@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="maeggi.seggi.recipeFavorite">
+	<insert id="insertFavorite" parameterType="favorite">
+		insert into recipe_favorite values(concat('fav',favorite_id_seq.nextval), #{recipe_id}, #{member_id}, sysdate, #{memo})
+	</insert>
+	<delete id="deleteFavorite" parameterType="Map">
+		delete from recipe_favorite rf where (#{recipe_id}, #{name}) = (select r.recipe_id, r.name from recipe r where r.recipe_id = rf.recipe_id)
+	</delete>
+	<select id="selectAllFavorites" parameterType="String" resultType="Map">
+		select r.name, r.member_id, r.content_intro, r.like_num, r.img_url_main, rf.*  
+		from recipe_favorite rf, recipe r 
+		where r.recipe_id = rf.recipe_id and rf.member_id = #{member_id}
+	</select>
+	<select id="selectByRecipeName" parameterType="Map" resultType="Map">
+		select r.name, r.member_id, r.content_intro, r.like_num, r.img_url_main, rf.*  
+		from recipe_favorite rf, recipe r 
+		where r.recipe_id = rf.recipe_id and rf.member_id = #{member_id} and r.name like '%' || #{name} || '%'
+	</select>
+</mapper>

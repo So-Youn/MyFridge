@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="loginandcustomer/login" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/login.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loginandcustomer/join" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/join.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loginandcustomer/admin_askdetail" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/admin_askdetail.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loginandcustomer/admin_asklist" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/admin_asklist.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loginandcustomer/noticedetail" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/noticedetail.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="loginandcustomer/noticelist" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/noticelist.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="naver/naverlogin" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/naver_login.jsp"></put-attribute>
+	</definition>
+	<definition name="loginandcustomer/admin_notice_write" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/admin_notice_write.jsp"></put-attribute>
+	</definition>
+	<definition name="loginandcustomer/admin_memberview" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/admin_memberview.jsp"></put-attribute>
+	</definition>
+	
+	<!-- 
+	<definition name="naver/callback" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/naver_login_callback.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="naver/naverloginjs" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/naver_login2.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="naver/callbackjs" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/loginandcustomer/naver_login_callback2.jsp"></put-attribute>
+	</definition>
+	 -->
+	
+	
+</tiles-definitions>   

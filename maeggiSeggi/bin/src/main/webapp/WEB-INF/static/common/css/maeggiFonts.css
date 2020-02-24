@@ -1,0 +1,28 @@
+@charset "UTF-8";
+
+@font-face {
+  font-family: 'dohyeon';
+  src: url('/maeggiSeggi/fonts/BMDOHYEON_ttf.ttf') format('truetype');
+}
+/* 여기까지 배민체 */
+
+@font-face {
+  font-family: 'PapyrusB';
+  src: url('/maeggiSeggi/fonts/Typo_PapyrusB.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PapyrusEB';
+  src: url('/maeggiSeggi/fonts/Typo_PapyrusEB.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PapyrusL';
+  src: url('/maeggiSeggi/fonts/Typo_PapyrusL.ttf') format('truetype');
+}
+
+@font-face {
+  font-family: 'PapyrusM';
+  src: url('/maeggiSeggi/fonts/Typo_PapyrusM.ttf') format('truetype');
+}
+/* 여기까지 타이포 파피루스 */

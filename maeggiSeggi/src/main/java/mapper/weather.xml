@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+  <mapper namespace="maeggi.seggi.restaurant">
+  		<select id="weather" resultType="weather" parameterType="String">
+  			select food_keyword, weather_id from
+  			(select w.weather_kind, d.food_keyword, w.weather_id
+  			from weather w, weather_detail d
+  			where w.weather_id = d.weather_id and w.weather_id = #{weather_id}
+  			order by dbms_random.random())
+  		</select>
+  </mapper>

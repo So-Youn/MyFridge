@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ <mapper namespace="maeggi.seggi.recipe">
+ 	<select id="listall" resultType="recipe">
+ 	select * from recipe
+
+  	</select>
+	<!-- radio 카테고리 조회 -->
+  	<select id="categoryRecipe" resultType="recipe" parameterType="Map">
+  	SELECT recipe_id,name,register_date,member_id,img_url_main,recipe_category ,r
+  	from (select recipe_id,name,register_date,member_id,img_url_main,recipe_category,ROW_NUMBER() OVER (ORDER BY recipe_id) r from recipe where recipe_category like '%' ||  #{recipe_category} || '%')
+	where r between #{pagenum} and #{contentnum}
+  	</select>
+  	 <!-- 검색어 조회 -->
+ 
+ 	<select id="recipeNameSearch" resultType="recipe" parameterType="Map">
+ 	SELECT recipe_id,name,register_date,member_id,img_url_main,recipe_category ,r
+  	from (select recipe_id,name,register_date,member_id,img_url_main,recipe_category,ROW_NUMBER() OVER (ORDER BY recipe_id) r from recipe where name like '%' || #{search} || '%')
+	where r between #{pagenum} and #{contentnum}
+
+  	</select> 
+  	<!-- 레시피 조회에서 팝업창으로 데이터 전송. -->
+  	<select id="moveTopopup" resultType="recipe" parameterType="String">
+  		select * from recipe where recipe_id = #{recipe_id}
+  	</select>
+  	<!-- 레시피 등록 -->
+  	<insert id="insert" parameterType="recipe">
+  		insert into recipe values(concat('rec', (recipe_id_seq.nextval + 90000)),#{name},#{content_intro},0,#{recipe_category},
+  					0,#{food_category},#{cook_time},#{kcal},#{amount_per_person},#{cook_level},0,#{price},#{img_url_main},0,0,0,sysdate,#{member_id})
+  	</insert>
+  	<insert id="insertdetail" parameterType="Map">
+  		insert all
+  		<foreach collection="detail" item="rd" separator=" ">
+  			into recipe_detail values(concat('rec', (recipe_id_seq.currval + 90000)), #{rd.recipe_order_num},#{rd.recipe_describe},#{rd.img_url},#{rd.tip})
+  		</foreach>	
+  		 select * from dual
+  	</insert>
+  	<!-- 조회수 증가  -->
+  	<update id="updatehit" parameterType="String">
+		update recipe
+		set hit = hit +1
+		where recipe_id=#{recipe_id}
+	</update>
+	<!-- 레시피 상세보기 -->
+	<select id="detail" parameterType="String" resultType="Map">
+		select r.recipe_id,r.name,r.img_url_main,r.register_date,r.like_num,r.content_intro,d.recipe_order_num,d.recipe_describe,r.member_id,r.hit,r.kcal
+			,r.img_url_sub,r.recipe_category,r.food_category,r.cook_time,r.amount_per_person,r.price,d.img_url,d.tip
+		from recipe r,recipe_detail d
+		where r.recipe_id=d.recipe_id and r.recipe_id=#{recipe_id}
+        order by d.recipe_order_num
+	</select>
+	<!-- 핫한 요리 (조회수) -->
+	<select id = "hitRecipe" resultType="recipe">
+		select * from
+		(select * from recipe)
+		order by hit desc
+	</select>
+
+	<!-- 난이도별 조회 -->
+  	<select id="levelRecipe" resultType="recipe" parameterType="String">
+  		select * from	
+  		(select * from recipe
+  		where cook_level=#{cook_level}
+  		order by dbms_random.random())
+  	</select>
+	<!-- 숙취가 해결되는 음식 -->
+	<select id="drunkRecipe" resultType="recipe" parameterType="String">
+		select r.* from recipe r,ingredients i where r.recipe_id = i.recipe_id and i.name in ('버섯','시금치','레몬')
+	</select>
+	<!-- 피로회복 -->
+	<select id="freshRecipe" resultType="recipe" parameterType="String">
+		select r.*,i.* from recipe r,ingredients i where r.recipe_id = i.recipe_id and i.name in ('콩나물')
+	</select>
+	<!-- 피로회복 -->
+	<resultMap type="Map" id="detailMap">
+		<result column="recipe_id" property="id"/>
+		<result column="name" property="name"/>
+		<result column="recipe_order_num" property="order"/>
+		<result column="recipe_describe" property="content"/>
+	</resultMap>
+	<select id="testlist" resultType="recipe" parameterType="Map">
+ SELECT recipe_id,name,register_date,member_id,img_url_main from(select recipe_id,name,register_date,member_id,img_url_main,ROW_NUMBER() OVER (ORDER BY recipe_id)r from recipe) where r between #{pagenum} and #{contentnum} 	
+<!-- 	select * from (select *,row_number() over (order by recipe_id) num from recipe) where num between #{pagenum} and #{contentnum}   -->
+ 	<!-- select * from(select row_number() over (order by recipe_id) num, r.* from recipe r order by recipe_id) where num between #{pagenum} and #{contentnum} 			 --> 
+	</select> 
+	<select id="testcount" resultType="int">
+		select count(*) from recipe
+	</select>
+	<select id="testcount2" resultType="int" parameterType="String">
+		select count(*) from recipe where recipe_category=#{recipe_category}
+	</select>
+	<select id="testcount3" resultType="int" parameterType="String">
+		select count(*) from recipe where name=#{name}
+	</select>
+	
+	<select id="recipeSearch" resultType="recipe" parameterType="String">
+  			select distinct r.recipe_id, r.name,r.content_intro,r.register_date,r.member_id,r.img_url_main
+  			from recipe r,ingredients i
+			where r.recipe_id=i.recipe_id	
+  			  		and (r.name like '%' || #{search} || '%' 
+  			  		or i.name like'%' || #{search} || '%')
+  	</select>
+	
+	<!-- 게시글 좋아요 관리 -->
+	<update id="like" parameterType="String">
+	update recipe
+	set like_num = like_num+1
+	where recipe_id=#{recipe_id}
+	</update>
+ </mapper> 

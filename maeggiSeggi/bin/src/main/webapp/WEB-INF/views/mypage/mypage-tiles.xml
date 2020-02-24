@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+       
+<tiles-definitions>
+	<definition name="mypage/ask" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/ask.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mypage/ask/write" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/ask_write.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mypage/ask/title" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/ask_title.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mypage/information/update" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/information_update.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mypage/main" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/mypage_main.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mypage/mypoint" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/mypoint.jsp"></put-attribute>
+	</definition>
+	
+	<definition name="mypage/recipe_favorite" extends="maeggiTemplate">
+		<put-attribute name="content" value="/WEB-INF/views/mypage/recipe_favorite.jsp"></put-attribute>
+	</definition>
+	
+	
+</tiles-definitions>   

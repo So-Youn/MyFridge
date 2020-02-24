@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="maeggi.seggi.loginandcustomer">
+	<select id="login" resultType="member" parameterType="member">
+		select *
+		from member
+		where member_id = #{member_id} and pass = #{pass}
+	</select>
+	<insert id="register">
+		insert into member
+		values(#{member_id}, #{pass},
+		#{name},#{ssn},#{phonenum},#{height},#{weight},#{gender},'seed',0,0,sysdate,'test')
+	</insert>
+	<select id="idCheck" resultType="member" parameterType="String">
+		select * from member where member_id = #{member_id}
+	</select>
+	<!-- 회원 정보 수정 -->
+	<update id="update">
+		update member
+		set pass = #{pass}, phonenum =
+		#{phonenum}, height = #{height}, weight = #{weight} where member_id =
+		#{member_id}
+	</update>
+
+	<!-- ==================관리자 컨트롤러 ============================ -->
+	<!-- 관리자가 회원 전체 보기 -->
+	<select id="admin_memberview" resultType="member"
+		parameterType="member">
+		select * from member order by regdate desc
+	</select>
+	
+	
+	<delete id="admin_delete" parameterType="String">
+		delete from member where
+		member_id= #{member_id}
+	</delete>
+
+</mapper>

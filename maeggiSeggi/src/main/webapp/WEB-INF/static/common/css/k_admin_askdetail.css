@@ -1,0 +1,67 @@
+@charset "UTF-8";
+
+#outter,h2,h3{
+	font-family: 'PapyrusM';
+}
+
+
+.askboard{
+	margin-left : auto;
+	margin-right: auto;
+	width : 1000px;
+	text-align: center;
+}
+.askboard th {
+    text-align: center;
+  }
+#ansComplete {
+	float : right;
+	width : 100px;
+	margin-left : 50px;
+	margin-right : 50px;
+	margin-bottom : 30px;
+}
+
+#askdetail_reply_managername{
+	margin-left : 100px;
+	margin-right : 50px;
+	margin-top : 50px;
+	float: left;
+}
+
+
+#ask_reply_send{
+width : 100px;
+
+}
+#ask_reply_pause{
+	width : 100px;
+	
+}
+#AskMangerForm button{
+	width : 100px;	
+	margin-left:auto;
+	margin-right:auto;
+}
+
+
+#askdetail_reply_managername{
+	display: inline;
+	padding-right : 10px;
+	
+}
+#feedback_box{
+	display: inline;
+}
+#text_feedback{
+	margin : 20px;
+	float : left;
+	width : 800px;
+	padding-top : 30px;
+}
+#reply_buttons{
+	margin-left : auto;
+	margin-right : auto;
+	text-align: center;
+	
+}

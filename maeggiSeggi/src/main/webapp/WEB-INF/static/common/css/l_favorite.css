@@ -1,0 +1,49 @@
+@charset "UTF-8";
+
+#inputDiv {
+	text-align: right;
+	vertical-align: center;
+}
+
+#inputText {
+	width: 200px;
+	height: 45px;
+	border: solid 1px;
+	border-radius: 4%;
+	margin: 4px;
+}
+
+#search {
+	width: 80px;
+	background-color: white;
+	border: solid 1px #f8585b;
+	color: #f8585b;
+	padding: 9px 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	font-weight : bolder;
+	margin: 4px;
+	cursor: pointer;
+	margin-right: 18%;
+	float: right;
+	border-radius: 10px;
+}
+
+#delete {
+	width: 120px;
+	background-color: #f8585b;
+	border: none;
+	color: #fff;
+	padding: 10px 0;
+	text-align: center;
+	text-decoration: none;
+	display: inline-block;
+	font-size: 15px;
+	margin: 4px;
+	cursor: pointer;
+	float: right;
+	border-radius: 10px;
+	
+}
